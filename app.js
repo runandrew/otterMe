@@ -6,6 +6,7 @@ const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
 
 // Required files
+const routerAPI = require('./api');
 
 // App creation
 const app = express();
@@ -21,9 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Routers
-app.use('/', (req, res, next) => {
-  res.send('HELLO!');
-})
+app.use('/api', routerAPI);
 
 // Error logging middleware
 app.use((err, req, res, next) => {
