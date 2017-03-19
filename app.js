@@ -35,7 +35,7 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`We're listening online on port ${PORT}`);
   console.log('Connecting to the database...');
-  db.sync({ force: true })
+  db.sync()
   .then(() => {
     console.log('Connected.');
   });

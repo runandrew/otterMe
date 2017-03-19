@@ -4,11 +4,12 @@
 const express = require('express');
 
 // Required files
+const routerOtter = require('./otter');
+const routerFamily = require('./family');
 
 // Router creation
 const routerAPI = express.Router();
 module.exports = routerAPI;
 
-routerAPI.use((req, res, next) => {
-  res.send('IN API ROUTER');
-});
+routerAPI.use('/otter', routerOtter);
+routerAPI.use('/family', routerFamily);
