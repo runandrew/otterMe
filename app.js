@@ -6,7 +6,7 @@ const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
 
 // Required files
-const db = require('./models');
+const { db } = require('./models');
 const routerAPI = require('./api');
 
 // App creation
@@ -15,27 +15,30 @@ const PORT = 1337;
 
 // Middleware
 
-//   Logging 
+//   Logging
 app.use(volleyball);
 
 //   Parsing
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Static file serving
+app.use(express.static('public'));
+
 // Routers
 app.use('/api', routerAPI);
 
 // Error logging middleware
 app.use((err, req, res, next) => {
-    console.error(err);
-    res.status(err.status || 500).send(err.message || 'Internal server error');
+  console.error(err);
+  res.status(err.status || 500).send(err.message || 'Internal server error');
 });
 
 // Start the server
 app.listen(PORT, () => {
   console.log(`We're listening online on port ${PORT}`);
   console.log('Connecting to the database...');
-  db.sync()
+  db.sync({ force: false })
   .then(() => {
     console.log('Connected.');
   });

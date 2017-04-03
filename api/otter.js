@@ -18,6 +18,15 @@ routerOtter.post('/', (req, res, next) => {
     })
     .catch(next);
 });
+
+routerOtter.get('/', (req, res, next) => {
+  Otter.findAll({})
+    .then((foundOtters) => {
+      res.status(200).send(foundOtters);
+    })
+    .catch(next);
+});
+
 // localhost:1337/api/otter/1?foo=bar
 routerOtter.get('/:otterId', (req, res, next) => {
   console.log('this is the query param', req.query.foo);
@@ -28,19 +37,20 @@ routerOtter.get('/:otterId', (req, res, next) => {
     .then((foundOtter) => {
       console.log(foundOtter.toys[0].name);
       res.status(200).send(foundOtter);
-    });
-})
+    })
+    .catch(next);
+});
 
 routerOtter.get('/:otterId/addFamily/:familyId', (req, res, next) => {
   let otter;
   Otter.findById(req.params.otterId)
     .then((foundOtter) => {
       otter = foundOtter;
-      return Family.findById(req.params.familyId); 
+      return Family.findById(req.params.familyId);
     })
     .then((foundFamily) => {
       otter.setFamily(foundFamily);
       res.sendStatus(200);
     })
     .catch(next);
-})
+});

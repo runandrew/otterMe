@@ -26,4 +26,4 @@ routerFamily.get('/:familyId', (req, res, next) => {
       res.send(foundFamily);
     })
     .catch(next);
-})
+});

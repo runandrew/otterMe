@@ -13,4 +13,9 @@ Family.hasMany(Otter);
 Toy.belongsToMany(Otter, { through: 'toyOtter' });
 Otter.belongsToMany(Toy, { through: 'toyOtter' });
 
-module.exports = db;
+module.exports = {
+  db,
+  Otter,
+  Family,
+  Toy
+};
