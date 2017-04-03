@@ -6,14 +6,20 @@ import { connect } from 'react-redux';
 // Required files
 import store from './store';
 import Otters from './components/Otters';
+import Home from './components/Home';
 
+// ------------ Component
 const Root = (props) => {
   return (
     <Router history={ browserHistory }>
-      <Router path="/" component={ Otters } onEnter={ props.fetchOtters }/>
+      <Route path="/" component={ Home }>
+        <Route path="/otters" component={ Otters } onEnter={ props.fetchOtters }/>
+      </Route>
     </Router>
   );
 };
+
+// ------------ Container Component
 
 // Required files
 import { fetchOtters } from './reducers/otters';
@@ -27,7 +33,6 @@ const mapStateToProps = (state) => {
 const mapDisptachToProps = (dispatch) => {
   return {
     fetchOtters: () => {
-      console.log('in fetch otters inside dispatch');
       dispatch(fetchOtters());
     }
   };

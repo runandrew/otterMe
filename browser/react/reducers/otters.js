@@ -32,9 +32,7 @@ export default function reducer (prevState = initialState, action) {
 
 // ----------- Disptachers
 export const fetchOtters = () => {
-  console.log('inside fetch otters');
   return (dispatch) => {
-    console.log('inside thunk fetch otters');
     axios.get('api/otter/')
       .then(response => {
         dispatch(receiveOtters(response.data));

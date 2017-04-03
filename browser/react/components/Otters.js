@@ -5,14 +5,21 @@ import { connect } from 'react-redux';
 // ------------- Component
 const Otters = (props) => {
   return (
-    <h1>Inside the otters component</h1>
+    <div>
+      <h1>These are the otters!</h1>
+      <ul>
+    { props.otters.map(otter => (
+      <li key={ otter.id }>{ otter.name }</li>
+    )) }
+      </ul>
+    </div>
   );
 };
 
 // ------------- Container
 const mapStateToProps = (state) => {
   return {
-
+    otters: state.otters.allOtters
   };
 };
 

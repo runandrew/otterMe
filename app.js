@@ -4,6 +4,7 @@
 const express = require('express');
 const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 // Required files
 const { db } = require('./models');
@@ -28,6 +29,14 @@ app.use(express.static('public'));
 // Routers
 app.use('/api', routerAPI);
 
+const validFrontendRoutes = ['/', '/otters'];
+const indexPath = path.join(__dirname, '/public', 'index.html');
+validFrontendRoutes.forEach(function (stateRoute) {
+  app.get(stateRoute, function (req, res) {
+    res.sendFile(indexPath);
+  });
+});
+
 // Error logging middleware
 app.use((err, req, res, next) => {
   console.error(err);
@@ -39,7 +48,7 @@ app.listen(PORT, () => {
   console.log(`We're listening online on port ${PORT}`);
   console.log('Connecting to the database...');
   db.sync({ force: false })
-  .then(() => {
-    console.log('Connected.');
-  });
+    .then(() => {
+      console.log('Connected.');
+    });
 });
