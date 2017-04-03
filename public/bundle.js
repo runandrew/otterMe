@@ -14819,7 +14819,16 @@ var Otters = function Otters(props) {
         return _react2.default.createElement(
           'li',
           { key: otter.id },
-          otter.name
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'h4',
+              null,
+              otter.name
+            ),
+            _react2.default.createElement('img', { src: otter.imgUrl })
+          )
         );
       })
     )

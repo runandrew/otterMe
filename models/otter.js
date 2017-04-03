@@ -7,7 +7,8 @@ const Sequelize = require('sequelize');
 const db = require('./_db');
 
 const Otter = db.define('otter', {
-  name: Sequelize.STRING
+  name: Sequelize.STRING,
+  imgUrl: Sequelize.TEXT
 });
 
 module.exports = Otter;

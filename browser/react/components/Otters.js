@@ -9,7 +9,12 @@ const Otters = (props) => {
       <h1>These are the otters!</h1>
       <ul>
     { props.otters.map(otter => (
-      <li key={ otter.id }>{ otter.name }</li>
+      <li key={ otter.id }>
+        <div>
+          <h4>{ otter.name }</h4>
+          <img src={ otter.imgUrl } />
+        </div>
+      </li>
     )) }
       </ul>
     </div>
