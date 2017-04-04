@@ -8,14 +8,14 @@ const Otters = (props) => {
     <div>
       <h1>These are the otters!</h1>
       <ul>
-    { props.otters.map(otter => (
-      <li key={ otter.id }>
-        <div>
-          <h4>{ otter.name }</h4>
-          <img src={ otter.imgUrl } />
-        </div>
-      </li>
-    )) }
+        { props.otters.map(otter => (
+        <li key={ otter.id }>
+          <div>
+            <h4>{ otter.name }</h4>
+            <img src={ otter.imgUrl } />
+          </div>
+        </li>
+        )) }
       </ul>
     </div>
   );
