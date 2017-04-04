@@ -1,5 +1,5 @@
 // Seed file
-const { Otter } = require('./index');
+const { db, Otter } = require('./index');
 
 const otterData = [
   {
@@ -16,11 +16,14 @@ const otterData = [
   }
 ];
 
-// const seedingPromise = Otter.create(otterData[0]);
-const arrPromises = otterData.map(otter => {
-  return Otter.create(otter);
-});
+db.sync()
+  .then(() => {
+    const arrPromises = otterData.map(otter => {
+      return Otter.create(otter);
+    });
 
-Promise.all(arrPromises).then(() => {
-  console.log(`${otterData.length} otters seeded`);
-});
+    Promise.all(arrPromises).then(() => {
+      console.log(`${otterData.length} otters seeded`);
+    });
+  });
+
