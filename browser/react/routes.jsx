@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 
 // Required files
 import store from './store';
-import Otters from './components/Otters';
-import Home from './components/Home';
+import Otters from './components/Otters.jsx';
+import Home from './components/Home.jsx';
 
 // ------------ Component
 const Root = (props) => {
