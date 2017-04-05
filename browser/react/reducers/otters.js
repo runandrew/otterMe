@@ -8,7 +8,7 @@ const FETCH_OTTERS = 'FETCH_OTTERS';
 export const receiveOtters = (otters) => {
   return {
     type: FETCH_OTTERS,
-    otters
+    otters: otters
   };
 };
 
